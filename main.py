@@ -16,7 +16,6 @@ screen = pygame.display.set_mode(SCREEN_SIZE, 0, 32)
 clock = pygame.time.Clock()
 grid = [[None for j in range(M)] for _ in range(N)]
 selected = [[False for j in range(M)] for _ in range(N)]
-eraseModeOff = True
 
 for i in range(50):
     for j in range(50):
@@ -51,12 +50,13 @@ def draw():
 
 def main():
     running = True
+    eraseModeOff = True
     while running:
         for event in pygame.event.get():
             if event.type == QUIT:
                 running = False
             if event.type == KEYDOWN:
-                if event.key == K_E:
+                if event.key == pygame.K_e:
                     eraseModeOff = not eraseModeOff
 
             # if event.type == MOUSEBUTTONDOWN:
