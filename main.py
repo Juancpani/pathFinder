@@ -16,6 +16,7 @@ screen = pygame.display.set_mode(SCREEN_SIZE, 0, 32)
 clock = pygame.time.Clock()
 grid = [[None for j in range(M)] for _ in range(N)]
 selected = [[False for j in range(M)] for _ in range(N)]
+eraseModeOff = True
 
 for i in range(50):
     for j in range(50):
@@ -54,6 +55,10 @@ def main():
         for event in pygame.event.get():
             if event.type == QUIT:
                 running = False
+            if event.type == KEYDOWN:
+                if event.key == K_E:
+                    eraseModeOff = not eraseModeOff
+
             # if event.type == MOUSEBUTTONDOWN:
             #     pos = pygame.mouse.get_pos()
             #     clicked_sprites = [s for s in sprites if s.collidepoint(pos)]
@@ -65,7 +70,7 @@ def main():
             if pygame.mouse.get_pressed()[0] and sprite.collidepoint(pygame.mouse.get_pos()):
                 i = int(sprite.y // SQUARE_LEN)
                 j = int(sprite.x // SQUARE_LEN)
-                selected[i][j] = True
+                selected[i][j] = eraseModeOff
 
         screen.fill(WHITE)
         draw()
