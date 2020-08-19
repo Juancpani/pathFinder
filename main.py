@@ -24,6 +24,8 @@ for i in range(50):
         rect = pygame.Rect(x, y, SQUARE_LEN, SQUARE_LEN)
         grid[i][j] = rect
 
+sprites = sum(grid, [])
+
 def draw():
     for i in range(N + 1):
         width = 1
@@ -51,14 +53,18 @@ def main():
         for event in pygame.event.get():
             if event.type == QUIT:
                 running = False
-            if event.type == MOUSEBUTTONDOWN:
-                pos = pygame.mouse.get_pos()
-                for row in grid:
-                    for rect in row:
-                        if rect.collidepoint(pos):
-                            i = int(rect.y // SQUARE_LEN)
-                            j = int(rect.x // SQUARE_LEN)
-                            selected[i][j] = True
+            # if event.type == MOUSEBUTTONDOWN:
+            #     pos = pygame.mouse.get_pos()
+            #     clicked_sprites = [s for s in sprites if s.collidepoint(pos)]
+            #     for sprite in clicked_sprites:
+            #         i = int(sprite.y // SQUARE_LEN)
+            #         j = int(sprite.x // SQUARE_LEN)
+            #         selected[i][j] = True
+        for sprite in sprites:
+            if pygame.mouse.get_pressed()[0] and sprite.collidepoint(pygame.mouse.get_pos()):
+                i = int(sprite.y // SQUARE_LEN)
+                j = int(sprite.x // SQUARE_LEN)
+                selected[i][j] = True
 
         screen.fill(WHITE)
         draw()
