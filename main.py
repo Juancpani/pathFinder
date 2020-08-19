@@ -27,15 +27,16 @@ for i in range(50):
 sprites = sum(grid, [])
 
 def draw():
-    for i in range(N + 1):
-        width = 1
-        horizontalStart = (MARGIN, MARGIN + (i * SQUARE_LEN))
-        horizontalEnd = (SCREEN_SIZE[0] - MARGIN, MARGIN + (i * SQUARE_LEN))
-        verticalStart = (MARGIN + (i * SQUARE_LEN), MARGIN)
-        verticalEnd = (MARGIN + (i * SQUARE_LEN), SCREEN_SIZE[0] - MARGIN)
+    
+    # for i in range(N + 1):
+    #     width = 1
+    #     horizontalStart = (MARGIN, MARGIN + (i * SQUARE_LEN))
+    #     horizontalEnd = (SCREEN_SIZE[0] - MARGIN, MARGIN + (i * SQUARE_LEN))
+    #     verticalStart = (MARGIN + (i * SQUARE_LEN), MARGIN)
+    #     verticalEnd = (MARGIN + (i * SQUARE_LEN), SCREEN_SIZE[0] - MARGIN)
 
-        pygame.draw.line(screen, BLACK, horizontalStart, horizontalEnd, width)
-        pygame.draw.line(screen, BLACK, verticalStart, verticalEnd, width)
+    #     pygame.draw.line(screen, BLACK, horizontalStart, horizontalEnd, width)
+    #     pygame.draw.line(screen, BLACK, verticalStart, verticalEnd, width)
     
     for i in range(N):
         for j in range(M):
